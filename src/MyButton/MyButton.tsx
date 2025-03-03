@@ -1,31 +1,26 @@
-import React from 'react';
 import { FC, ReactNode } from 'react';
-// import './MyButton.css'
+import styles from './MyButton.module.scss';
+import clsx from 'clsx';
+
 
 export interface MyButtonProps {
     color?: string;
-    // big?: boolean;
+    big?: boolean;
     children: ReactNode
 }
 
-const MyButton: FC<MyButtonProps> = ({
-                                         children,
-                                         color,
-                                        //  big,
-                                         ...props
-                                     }) => {
-
-    // const rootClasses = ['my-button']
-    // if (big) {
-    //     rootClasses.push('big-btn')
-    // }
-
+export const MyButton: FC<MyButtonProps> = ({ children, color, big, ...props }) => {
     return (
-        <button {...props} style={{color}}>
-        {/* <button {...props} className={rootClasses.join(' ')} style={{color}}> */}
-            {children} 
-        </button>
+      <button
+        {...props}
+        className={clsx(styles.myButton, {
+          [styles.bigBtn]: big,
+        })}
+        style={{ color }}
+      >
+        {children}
+      </button>
     );
-};
+  };
 
-export default MyButton;
+export default MyButton; 

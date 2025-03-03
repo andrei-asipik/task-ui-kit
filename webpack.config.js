@@ -1,24 +1,18 @@
 import path from 'path';
-// const path = require('path');
-
-// console.log(path.resolve(process.cwd(), 'dist'))
 
 export default {
-// module.exports = {   
     mode: 'production',
     entry: './src/index.ts',
     output: {
         filename: "index.js",
-        // path: path.resolve(__dirname, 'dist'),
+        
         path: path.resolve(process.cwd(), 'dist'),
-        libraryTarget: "umd", // Изменено с "umd" на "module"
+        libraryTarget: "umd", 
         clean: true
     },
-    // experiments: {
-    //     outputModule: true // Включает поддержку ESM
-    // },
     resolve: {
-        extensions: ['.ts', '.tsx']
+        // extensions: ['.ts', '.tsx'],
+        extensions: ['.ts', '.tsx', '.js', '.scss'],
     },
     externals: {
         react: 'react'
@@ -30,7 +24,16 @@ export default {
                 use: ['style-loader', 'css-loader'],
                 exclude: /node_modules/
             },
-            {
+         {
+                test: /\.module\.scss$/,
+                use: [
+                    'style-loader', // добавляет CSS в DOM
+                    'css-loader', // обрабатывает CSS файлы
+                    'sass-loader', // компилирует SCSS в CSS
+                ],
+                exclude: /node_modules/,
+            },
+         {
                 test: /\.(ts|tsx)?$/,
                 use: ['ts-loader'],
                 exclude: /node_modules/
