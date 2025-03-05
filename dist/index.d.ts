@@ -1,2 +1,2 @@
-import MyButton from "./MyButton/MyButton";
+import MyButton from './MyButton/MyButton';
 export { MyButton };
