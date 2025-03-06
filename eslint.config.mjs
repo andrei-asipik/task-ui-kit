@@ -42,5 +42,9 @@ export default tseslint.config(
       'no-var': 'error',
       'prefer-const': 'error',
     },
+  },
+  {
+    files: ['.storybook/**/*.ts', '.storybook/**/*.tsx'],
+    extends: [tseslint.configs.disableTypeChecked],
   }
 );
