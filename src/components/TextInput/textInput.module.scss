@@ -1,0 +1,101 @@
+@use '../../styles/colors' as *;
+
+.textField {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: fit-content;
+}
+
+.input {
+  width: 100%;
+  transition: border-color 0.3s;
+  font-size: 16px;
+  outline: none;
+}
+.inputStandard {
+  border: none;
+  padding: 20px 16px 8px 0;
+  border-bottom: 1px solid $default-color;
+}
+
+.inputOutlined {
+  border: 1px solid $default-color;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.inputFilled {
+  padding: 20px 16px 8px 16px;
+  border: none;
+  border-bottom: 1px solid $default-color;
+  background-color: $background-input-color;
+  border-radius: 8px 8px 0 0;
+}
+
+.label {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: $default-color;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.labelStandart {
+  color: $default-color;
+}
+
+.labelFilled {
+  left: 16px;
+}
+
+.labelOutlined {
+  top: 50%;
+  left: 16px;
+}
+.labelFloat {
+  top: 0;
+  font-size: 12px;
+  color: $primary-color;
+}
+
+.labelFloatStandard {
+  transform: translateY(-40%);
+}
+.labelFloatFilled {
+  transform: translateY(10%);
+  color: $primary-color;
+}
+.labelFloatOutlined {
+  transform: translateY(-50%);
+  color: $primary-color;
+  padding: 0 4px;
+  background-color: $white;
+}
+
+.errorFloat {
+  top: 0;
+  font-size: 12px;
+  color: $error-color;
+}
+
+.input:focus {
+  border-color: $primary-color;
+}
+
+.error .input {
+  border-color: $error-color;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.helperText {
+  font-size: 12px;
+  color: $error-color;
+  margin-top: 4px;
+}

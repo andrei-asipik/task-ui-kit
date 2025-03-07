@@ -9,15 +9,15 @@
     "lib": ["es2015", "dom"],
     "outDir": "./dist/",
     "sourceMap": true,
-    "declaration": true,
-    "baseUrl": "./",
-    "paths": {
-      "@styles/*": ["src/styles/*"],
-      "@templates/*": ["src/components/templates/*"],
-      "@pages/*": ["src/components/pages/*"],
-      "@organisms/*": ["src/components/organisms/*"]
-    }
+    "declaration": true
+    // "baseUrl": "./"
+    // "paths": {
+    //   "@styles/*": ["src/styles/*"],
+    //   "@templates/*": ["src/components/templates/*"],
+    //   "@pages/*": ["src/components/pages/*"],
+    //   "@organisms/*": ["src/components/organisms/*"]
+    // }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "./src/stories"]
 }

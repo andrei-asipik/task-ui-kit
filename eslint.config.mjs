@@ -9,7 +9,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules', 'dist', '**/*.config.{js,mjs,cjs}'],
+    ignores: ['node_modules', 'dist', '**/*.config.{js,mjs,cjs}', 'src/stories'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

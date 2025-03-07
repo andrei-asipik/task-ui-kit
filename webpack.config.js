@@ -1,5 +1,11 @@
 import path from 'path';
 
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
+
 export default {
   mode: 'production',
   entry: './src/index.ts',
@@ -11,16 +17,17 @@ export default {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.scss'],
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components/'),
-      '@styles': path.resolve(__dirname, 'src/styles/'),
-      '@organisms': path.resolve(__dirname, 'src/components/organisms/'),
-      '@pages': path.resolve(__dirname, 'src/components/pages/'),
-      '@templates': path.resolve(__dirname, 'src/components/templates/'),
-    },
+    // alias: {
+    //   '@components': path.resolve(__dirname, 'src/components/'),
+    //   '@styles': path.resolve(__dirname, 'src/styles/'),
+    //   '@organisms': path.resolve(__dirname, 'src/components/organisms/'),
+    //   '@pages': path.resolve(__dirname, 'src/components/pages/'),
+    //   '@templates': path.resolve(__dirname, 'src/components/templates/'),
+    // },
   },
   externals: {
     react: 'react',
+    // 'react-dom': 'react-dom',
   },
   module: {
     rules: [
