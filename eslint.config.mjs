@@ -9,7 +9,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules', 'dist', '**/*.config.{js,mjs,cjs}', 'src/stories'],
+    ignores: ['node_modules', 'dist', '**/*.config.{js,mjs,cjs}'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
@@ -41,10 +41,16 @@ export default tseslint.config(
       ...eslintConfigPrettier.rules,
       'no-var': 'error',
       'prefer-const': 'error',
+      'react-hooks/rules-of-hooks': 'error',
     },
   },
   {
     files: ['.storybook/**/*.ts', '.storybook/**/*.tsx'],
     extends: [tseslint.configs.disableTypeChecked],
+    languageOptions: {
+      parserOptions: {
+        project: null,
+      },
+    },
   }
 );

@@ -14,10 +14,9 @@ export interface TextInputProps {
   helperText?: string;
 }
 
-export const TextInput = ({
+const TextInput = ({
   label,
   value = '',
-  onChange,
   type = 'text',
   variant = 'standard',
   error = false,
@@ -25,6 +24,23 @@ export const TextInput = ({
   helperText,
 }: TextInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  // const isFocused = true;
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    if (!inputValue) {
+      setIsFocused(false);
+    }
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <div
       className={clsx(styles.textField, {
@@ -55,13 +71,15 @@ export const TextInput = ({
           [styles.inputFilled]: variant === 'filled',
           [styles.inputOutlined]: variant === 'outlined',
         })}
-        value={value}
-        onChange={onChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        value={inputValue}
         disabled={disabled}
       />
       {error && helperText && <span className={styles.helperText}>{helperText}</span>}
     </div>
   );
 };
+
+export default TextInput;

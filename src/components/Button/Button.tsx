@@ -1,28 +1,30 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import styles from './button.module.scss';
 import clsx from 'clsx';
 
 export interface ButtonProps {
-  backgroundColor?: string;
+  // backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'contained' | 'outlined';
   disabled?: boolean;
-  label: string;
   onClick?: () => void;
+  children?: ReactNode;
 }
 
-export const Button = ({
+const Button = ({
+  children,
   size = 'medium',
   variant = 'contained',
   disabled = false,
-  backgroundColor,
-  label,
+  // backgroundColor,
+  onClick,
   ...props
 }: ButtonProps) => {
   return (
     <button
       type="button"
+      onClick={onClick}
       className={clsx(
         styles.button,
         {
@@ -37,10 +39,12 @@ export const Button = ({
         },
         disabled && styles.disabled
       )}
-      style={{ backgroundColor }}
+      // style={{ backgroundColor }}
       {...props}
     >
-      {label}
+      {children}
     </button>
   );
 };
+
+export default Button;

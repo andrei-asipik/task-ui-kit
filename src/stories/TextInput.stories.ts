@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
-import { TextInput } from '../components/TextInput/TextInput';
+import TextInput from '../components/TextInput/TextInput';
 
 const meta = {
   title: 'Components/TextInput',
@@ -13,11 +12,15 @@ const meta = {
   argTypes: {
     error: { control: 'boolean' },
     disabled: { control: 'boolean' },
-  },
-  args: {
-    value: '',
-    onChange: fn(),
-    label: 'Enter text',
+    variant: {
+      control: {
+        type: 'radio',
+        options: ['standard', 'filled', 'outlined'],
+      },
+    },
+    helperText: {
+      control: 'text',
+    },
   },
 } satisfies Meta<typeof TextInput>;
 
@@ -26,25 +29,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    value: '',
+    label: 'Enter text',
     variant: 'standard',
   },
 };
-
-// export const Small: Story = {
-//   args: {
-//     size: 'small',
-//   },
-// };
-
-// export const Error: Story = {
-//   args: {
-//     error: true,
-//     helperText: 'This field is required.',
-//   },
-// };
-
-// export const Disabled: Story = {
-//   args: {
-//     disabled: true,
-//   },
-// };

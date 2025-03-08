@@ -1,7 +1,7 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-webpack5-compiler-swc',
     '@storybook/addon-essentials',
@@ -13,9 +13,9 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
-  typescript: {
-    check: true,
-  },
+  // typescript: {
+  //   check: true,
+  // },
   webpackFinal: (config) => {
     if (config.module && config.module.rules) {
       config.module.rules.push({

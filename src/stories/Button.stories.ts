@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 
-import { Button } from '../components/Button/Button';
+import Button from '../components/Button/Button';
 
 const meta = {
   title: 'Components/Button',
@@ -11,9 +10,19 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: { control: 'color' },
+    variant: {
+      control: {
+        type: 'radio',
+        options: ['text', 'contained', 'outlined'],
+      },
+    },
+    size: {
+      control: {
+        type: 'radio',
+        options: ['small', 'medium', 'large'],
+      },
+    },
   },
-  args: { onClick: fn() },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -22,20 +31,20 @@ type Story = StoryObj<typeof meta>;
 export const Large: Story = {
   args: {
     size: 'large',
-    label: 'Button',
+    children: 'Button',
   },
 };
 
 export const Small: Story = {
   args: {
     size: 'small',
-    label: 'Button',
+    children: 'Button',
   },
 };
 export const Disabled: Story = {
   args: {
     size: 'small',
-    label: 'Button',
+    children: 'Button',
     disabled: true,
   },
 };
