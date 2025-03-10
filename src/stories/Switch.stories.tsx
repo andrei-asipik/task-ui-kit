@@ -39,7 +39,7 @@ const Switcher = (args: SwitchProps) => {
 
   const handleChange = (newChecked: boolean) => {
     setChecked(newChecked);
-    args.onChange(newChecked);
+    args.onChange?.(newChecked);
   };
 
   return <Switch {...args} checked={checked} onChange={handleChange} />;
