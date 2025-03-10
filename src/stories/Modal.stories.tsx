@@ -6,6 +6,7 @@ const meta = {
   title: 'Components/Modal',
   component: Modal,
   parameters: { layout: 'centered' },
+  tags: ['autodocs'],
   argTypes: {
     isOpen: { control: 'boolean' },
     title: { control: 'text' },

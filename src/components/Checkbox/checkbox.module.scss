@@ -1,0 +1,44 @@
+@use '../../styles/colors' as *;
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid $inactive-color;
+  border-radius: 4px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.checked {
+    background-color: $primary-color;
+    border-color: $primary-color;
+
+    &::after {
+      content: '✔';
+      color: white;
+      font-size: 12px;
+    }
+  }
+}
+
+.label {
+  font-size: 14px;
+  color: $input-text-color;
+}
