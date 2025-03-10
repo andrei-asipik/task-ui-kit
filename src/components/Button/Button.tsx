@@ -4,7 +4,6 @@ import styles from './button.module.scss';
 import clsx from 'clsx';
 
 export interface ButtonProps {
-  // backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'contained' | 'outlined';
   disabled?: boolean;
@@ -17,7 +16,6 @@ const Button = ({
   size = 'medium',
   variant = 'contained',
   disabled = false,
-  // backgroundColor,
   onClick,
   ...props
 }: ButtonProps) => {
@@ -39,7 +37,6 @@ const Button = ({
         },
         disabled && styles.disabled
       )}
-      // style={{ backgroundColor }}
       {...props}
     >
       {children}

@@ -1,4 +1,6 @@
 import Button from './components/Button/Button';
+import Switch from './components/Switch/Switch';
 import TextInput from './components/TextInput/TextInput';
+// import Select from './components/Select/Select';
 
-export { Button, TextInput };
+export { Button, TextInput, Switch };

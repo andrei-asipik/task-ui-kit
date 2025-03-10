@@ -1,0 +1,127 @@
+// @use '../../styles/colors' as *;
+
+// .selectContainer {
+//   display: flex;
+//   flex-direction: column;
+//   position: relative;
+//   width: fit-content;
+// }
+
+// .select {
+//   width: 100%;
+//   cursor: pointer;
+//   transition: border-color 0.3s;
+//   font-size: 16px;
+//   padding: 12px 16px;
+//   border-radius: 8px;
+//   // background-color: $white;
+//   background-color: green;
+// }
+
+// .select.standard {
+//   border-bottom: 1px solid $default-color;
+// }
+
+// .select.filled {
+//   background-color: $background-input-color;
+//   border-bottom: 1px solid $default-color;
+// }
+
+// .select.outlined {
+//   border: 1px solid $default-color;
+// }
+
+// .selectedValue {
+//   color: $default-color;
+// }
+
+// .optionsList {
+//   position: absolute;
+//   top: 100%;
+//   left: 0;
+//   width: 100%;
+//   background: $white;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   margin-top: 4px;
+//   z-index: 10;
+//   max-height: 200px;
+//   overflow-y: auto;
+// }
+
+// .option {
+//   padding: 12px 16px;
+//   cursor: pointer;
+//   transition: background 0.2s;
+
+//   &:hover {
+//     background: red;
+//   }
+// }
+
+// .selected {
+//   background: $primary-color;
+// }
+
+// .error .select {
+//   border-color: $error-color;
+// }
+
+// .disabled {
+//   opacity: 0.5;
+//   pointer-events: none;
+// }
+
+// .helperText {
+//   font-size: 12px;
+//   color: $error-color;
+//   margin-top: 4px;
+// }
+
+// .label {
+//   position: absolute;
+//   top: 70%;
+//   transform: translateY(-50%);
+//   font-size: 16px;
+//   color: $default-color;
+//   transition: all 0.2s ease-in-out;
+//   pointer-events: none;
+// }
+
+// .labelStandart {
+//   color: $default-color;
+// }
+
+// .labelFilled {
+//   left: 16px;
+// }
+
+// .labelOutlined {
+//   top: 50%;
+//   left: 16px;
+// }
+// .labelFloat {
+//   top: 0;
+//   font-size: 12px;
+//   color: $primary-color;
+// }
+
+// .labelFloatStandard {
+//   transform: translateY(-40%);
+// }
+// .labelFloatFilled {
+//   transform: translateY(10%);
+//   color: $primary-color;
+// }
+// .labelFloatOutlined {
+//   transform: translateY(-50%);
+//   color: $primary-color;
+//   padding: 0 4px;
+//   background-color: $white;
+// }
+
+// .errorFloat {
+//   top: 0;
+//   font-size: 12px;
+//   color: $error-color;
+// }
