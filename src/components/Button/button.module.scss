@@ -14,43 +14,46 @@
   }
 }
 
-.buttonSmall {
-  padding: 10px 16px;
+.small {
+  padding: 8px 16px;
   font-size: 12px;
 }
-.buttonMedium {
-  padding: 11px 20px;
+.medium {
+  padding: 10px 20px;
   font-size: 14px;
 }
-.buttonLarge {
+.large {
   padding: 12px 24px;
   font-size: 16px;
 }
 
-.buttonContained {
+.contained {
   background-color: $primary-color;
   color: $white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px $shadow-color;
 }
 
-.buttonOutlined {
+.outlined {
   background-color: transparent;
   color: $primary-color;
   border: 2px solid $primary-color;
 }
 
-.buttonText {
+.text {
   background-color: transparent;
   color: $primary-color;
   border: none;
 }
 
-.buttonText:hover {
+.text:hover {
   background-color: $background-hover-color;
 }
 
 .disabled {
-  border-color: $background-hover-color;
-  color: $background-hover-color;
+  opacity: 0.5;
   cursor: not-allowed;
+
+  &:hover {
+    opacity: 0.2;
+  }
 }

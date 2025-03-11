@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Modal, { ModalProps } from '../components/Modal/Modal';
 
@@ -19,10 +19,19 @@ type Story = StoryObj<typeof meta>;
 
 const ModalWrapper = (args: ModalProps) => {
   const [open, setOpen] = useState(args.isOpen);
+
+  useEffect(() => {
+    setOpen(args.isOpen);
+  }, [args.isOpen]);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <button onClick={() => setOpen(true)}>Open Modal</button>
-      <Modal {...args} isOpen={open} onClose={() => setOpen(false)}>
+      <Modal {...args} isOpen={open} onClose={handleClose}>
         <p>Modal content</p>
       </Modal>
     </>

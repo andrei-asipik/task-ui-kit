@@ -7,8 +7,9 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   variant?: 'text' | 'contained' | 'outlined';
   disabled?: boolean;
-  onClick?: () => void;
+  onClick: () => void;
   children?: ReactNode;
+  className?: string;
 }
 
 const Button = ({
@@ -17,6 +18,7 @@ const Button = ({
   variant = 'contained',
   disabled = false,
   onClick,
+  className,
   ...props
 }: ButtonProps) => {
   return (
@@ -25,17 +27,10 @@ const Button = ({
       onClick={onClick}
       className={clsx(
         styles.button,
-        {
-          [styles.buttonSmall]: size === 'small',
-          [styles.buttonMedium]: size === 'medium',
-          [styles.buttonLarge]: size === 'large',
-        },
-        {
-          [styles.buttonText]: variant === 'text',
-          [styles.buttonContained]: variant === 'contained',
-          [styles.buttonOutlined]: variant === 'outlined',
-        },
-        disabled && styles.disabled
+        styles[size],
+        styles[variant],
+        disabled && styles.disabled,
+        className
       )}
       {...props}
     >
