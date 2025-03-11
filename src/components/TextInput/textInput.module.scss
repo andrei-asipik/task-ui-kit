@@ -5,6 +5,7 @@
   flex-direction: column;
   position: relative;
   width: fit-content;
+  background-color: $white;
 }
 
 .input {
@@ -13,9 +14,10 @@
   font-size: 16px;
   outline: none;
 }
+
 .inputStandard {
   border: none;
-  padding: 20px 16px 8px 0;
+  padding: 20px 16px 8px 4px;
   border-bottom: 1px solid $default-color;
 }
 
@@ -45,6 +47,7 @@
 
 .labelStandart {
   color: $default-color;
+  left: 4px;
 }
 
 .labelFilled {
@@ -55,24 +58,27 @@
   top: 50%;
   left: 16px;
 }
+
 .labelFloat {
   top: 0;
   font-size: 12px;
+  border-color: $primary-color;
+}
+
+.labelFocused {
   color: $primary-color;
 }
 
 .labelFloatStandard {
-  transform: translateY(-40%);
+  transform: translateY(10%);
 }
 .labelFloatFilled {
   transform: translateY(10%);
-  color: $primary-color;
 }
 .labelFloatOutlined {
   transform: translateY(-50%);
-  color: $primary-color;
   padding: 0 4px;
-  background-color: $white;
+  background-color: inherit;
 }
 
 .errorFloat {
