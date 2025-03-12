@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import styles from './select.module.scss';
 
@@ -10,8 +10,11 @@ export interface SelectOption {
 export interface SelectProps {
   label?: string;
   options: SelectOption[];
-  value?: string;
-  onChange?: (value: string) => void;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  isOpen: boolean;
+  onFocus: () => void;
+  onBlur: () => void;
   variant?: 'standard' | 'filled' | 'outlined';
   error?: boolean;
   disabled?: boolean;
@@ -22,29 +25,16 @@ export interface SelectProps {
 const Select = ({
   label,
   options,
-  value = '',
+  value,
   onChange,
+  isOpen,
+  onFocus,
+  onBlur,
   variant = 'standard',
   error = false,
   disabled = false,
   helperText,
 }: SelectProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(value);
-
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newValue = event.target.value;
-    setSelectedValue(newValue);
-    onChange?.(newValue);
-  };
-
-  const handleFocus = () => {
-    setIsOpen(true);
-  };
-
-  const handleBlur = () => {
-    setIsOpen(false);
-  };
   return (
     <div
       className={clsx(styles.selectContainer, {
@@ -55,13 +45,11 @@ const Select = ({
       <label
         className={clsx(styles.label, {
           [styles.errorFloat]: error,
-          [styles.labelFloat]: isOpen || !!selectedValue,
+          [styles.labelFloat]: isOpen || !!value,
           [styles.labelFocused]: !error && isOpen,
-          [styles.labelFloatStandard]:
-            variant === 'standard' && (error || isOpen || !!selectedValue),
-          [styles.labelFloatFilled]: variant === 'filled' && (error || isOpen || !!selectedValue),
-          [styles.labelFloatOutlined]:
-            variant === 'outlined' && (error || isOpen || !!selectedValue),
+          [styles.labelFloatStandard]: variant === 'standard' && (error || isOpen || !!value),
+          [styles.labelFloatFilled]: variant === 'filled' && (error || isOpen || !!value),
+          [styles.labelFloatOutlined]: variant === 'outlined' && (error || isOpen || !!value),
           [styles.labelStandart]: variant === 'standard',
           [styles.labelFilled]: variant === 'filled',
           [styles.labelOutlined]: variant === 'outlined',
@@ -71,10 +59,10 @@ const Select = ({
       </label>
 
       <select
-        value={selectedValue ?? ''}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        value={value ?? ''}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
         disabled={disabled}
         className={clsx(styles.select, {
           [styles.errorBorder]: error,
@@ -83,7 +71,7 @@ const Select = ({
           [styles.outlined]: variant === 'outlined',
         })}
       >
-        {<option value="" disabled={!!selectedValue}></option>}
+        {<option value="" disabled={!!value}></option>}
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

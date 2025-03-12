@@ -1,14 +1,16 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 
 import styles from './textInput.module.scss';
 import clsx from 'clsx';
 
 export interface TextInputProps {
   label?: string;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isFocused: boolean;
+  onFocus: () => void;
+  onBlur: () => void;
   variant?: 'standard' | 'filled' | 'outlined';
-  type?: string;
   error?: boolean;
   disabled?: boolean;
   helperText?: string;
@@ -17,26 +19,15 @@ export interface TextInputProps {
 const TextInput = ({
   label,
   value = '',
+  onChange,
+  isFocused,
+  onFocus,
+  onBlur,
   variant = 'standard',
   error = false,
   disabled = false,
   helperText,
 }: TextInputProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const [inputValue, setInputValue] = useState(value);
-
-  const onFocus = () => {
-    setIsFocused(true);
-  };
-
-  const onBlur = () => {
-    setIsFocused(false);
-  };
-
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   return (
     <div
       className={clsx(styles.textField, {
@@ -47,11 +38,11 @@ const TextInput = ({
       <label
         className={clsx(styles.label, {
           [styles.errorFloat]: error,
-          [styles.labelFloat]: isFocused || inputValue,
+          [styles.labelFloat]: isFocused || !!value,
           [styles.labelFocused]: !error && isFocused,
-          [styles.labelFloatStandard]: variant === 'standard' && (error || isFocused || inputValue),
-          [styles.labelFloatFilled]: variant === 'filled' && (error || isFocused || inputValue),
-          [styles.labelFloatOutlined]: variant === 'outlined' && (error || isFocused || inputValue),
+          [styles.labelFloatStandard]: variant === 'standard' && (error || isFocused || !!value),
+          [styles.labelFloatFilled]: variant === 'filled' && (error || isFocused || !!value),
+          [styles.labelFloatOutlined]: variant === 'outlined' && (error || isFocused || !!value),
           [styles.labelStandart]: variant === 'standard',
           [styles.labelFilled]: variant === 'filled',
           [styles.labelOutlined]: variant === 'outlined',
@@ -70,7 +61,7 @@ const TextInput = ({
         onFocus={onFocus}
         onBlur={onBlur}
         onChange={onChange}
-        value={inputValue}
+        value={value}
         disabled={disabled}
       />
       {error && helperText && <span className={styles.helperText}>{helperText}</span>}
