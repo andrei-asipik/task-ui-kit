@@ -1,127 +1,127 @@
-// @use '../../styles/colors' as *;
+@use '../../styles/colors' as *;
 
-// .selectContainer {
-//   display: flex;
-//   flex-direction: column;
-//   position: relative;
-//   width: fit-content;
-// }
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: fit-content;
+}
 
-// .select {
-//   width: 100%;
-//   cursor: pointer;
-//   transition: border-color 0.3s;
-//   font-size: 16px;
-//   padding: 12px 16px;
-//   border-radius: 8px;
-//   // background-color: $white;
-//   background-color: green;
-// }
+.select {
+  width: 100%;
+  min-width: 150px;
+  cursor: pointer;
+  border: none;
+  transition: border-color 0.3s;
+  font-size: 16px;
+  padding: 16px 8px 4px 0;
+  border-bottom: 1px solid $default-color;
+  border-radius: 4px 4px 0 0;
+  outline: none;
+}
 
-// .select.standard {
-//   border-bottom: 1px solid $default-color;
-// }
+.filled {
+  background-color: $background-input-color;
+  padding-left: 4px;
+}
 
-// .select.filled {
-//   background-color: $background-input-color;
-//   border-bottom: 1px solid $default-color;
-// }
+.outlined {
+  border: 1px solid $default-color;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
 
-// .select.outlined {
-//   border: 1px solid $default-color;
-// }
+.selectedValue {
+  color: $default-color;
+}
 
-// .selectedValue {
-//   color: $default-color;
-// }
+.optionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
 
-// .optionsList {
-//   position: absolute;
-//   top: 100%;
-//   left: 0;
-//   width: 100%;
-//   background: $white;
-//   border-radius: 8px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   margin-top: 4px;
-//   z-index: 10;
-//   max-height: 200px;
-//   overflow-y: auto;
-// }
+.option {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
 
-// .option {
-//   padding: 12px 16px;
-//   cursor: pointer;
-//   transition: background 0.2s;
+.error .select {
+  border-color: $error-color;
+}
 
-//   &:hover {
-//     background: red;
-//   }
-// }
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
-// .selected {
-//   background: $primary-color;
-// }
+.helperText {
+  font-size: 12px;
+  color: $error-color;
+  margin-top: 4px;
+}
 
-// .error .select {
-//   border-color: $error-color;
-// }
+.label {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: $default-color;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
 
-// .disabled {
-//   opacity: 0.5;
-//   pointer-events: none;
-// }
+.labelStandart {
+  color: $default-color;
+  top: 50%;
+  left: 4px;
+}
 
-// .helperText {
-//   font-size: 12px;
-//   color: $error-color;
-//   margin-top: 4px;
-// }
+.labelFilled {
+  top: 50%;
+  left: 8px;
+}
+.labelOutlined {
+  top: 50%;
+  left: 16px;
+}
+.labelFloat {
+  top: 0;
+  font-size: 12px;
+}
 
-// .label {
-//   position: absolute;
-//   top: 70%;
-//   transform: translateY(-50%);
-//   font-size: 16px;
-//   color: $default-color;
-//   transition: all 0.2s ease-in-out;
-//   pointer-events: none;
-// }
+.labelFloatStandard {
+  transform: translateY(15%);
+}
+.labelFloatFilled {
+  transform: translateY(10%);
+}
+.labelFloatOutlined {
+  transform: translateY(-50%);
+  padding: 0 4px;
+  background-color: $white;
+  left: 12px;
+}
 
-// .labelStandart {
-//   color: $default-color;
-// }
+.errorFloat {
+  top: 0;
+  font-size: 12px;
+  color: $error-color;
+}
 
-// .labelFilled {
-//   left: 16px;
-// }
+.labelFocused {
+  color: $primary-color;
+}
 
-// .labelOutlined {
-//   top: 50%;
-//   left: 16px;
-// }
-// .labelFloat {
-//   top: 0;
-//   font-size: 12px;
-//   color: $primary-color;
-// }
-
-// .labelFloatStandard {
-//   transform: translateY(-40%);
-// }
-// .labelFloatFilled {
-//   transform: translateY(10%);
-//   color: $primary-color;
-// }
-// .labelFloatOutlined {
-//   transform: translateY(-50%);
-//   color: $primary-color;
-//   padding: 0 4px;
-//   background-color: $white;
-// }
-
-// .errorFloat {
-//   top: 0;
-//   font-size: 12px;
-//   color: $error-color;
-// }
+.select:focus {
+  border-color: $primary-color;
+}

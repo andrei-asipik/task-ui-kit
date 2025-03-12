@@ -1,90 +1,98 @@
-// import React, { useState } from 'react';
-// import clsx from 'clsx';
-// import styles from './select.module.scss';
+import React, { useState } from 'react';
+import clsx from 'clsx';
+import styles from './select.module.scss';
 
-// export interface SelectOption {
-//   value: string;
-//   label: string;
-// }
+export interface SelectOption {
+  value: string;
+  label: string;
+}
 
-// export interface SelectProps {
-//   label?: string;
-//   options: SelectOption[];
-//   value?: string;
-//   onChange?: (value: string) => void;
-//   variant?: 'standard' | 'filled' | 'outlined';
-//   error?: boolean;
-//   disabled?: boolean;
-//   helperText?: string;
-// }
+export interface SelectProps {
+  label?: string;
+  options: SelectOption[];
+  value?: string;
+  onChange?: (value: string) => void;
+  variant?: 'standard' | 'filled' | 'outlined';
+  error?: boolean;
+  disabled?: boolean;
+  helperText?: string;
+  required?: boolean;
+}
 
-// const Select = ({
-//   label,
-//   options,
-//   value = '',
-//   onChange,
-//   variant = 'standard',
-//   error = false,
-//   disabled = false,
-//   helperText,
-// }: SelectProps) => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [selectedValue, setSelectedValue] = useState(value);
+const Select = ({
+  label,
+  options,
+  value = '',
+  onChange,
+  variant = 'standard',
+  error = false,
+  disabled = false,
+  helperText,
+}: SelectProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(value);
 
-//   const handleSelect = (option: SelectOption) => {
-//     setSelectedValue(option.value);
-//     setIsOpen(false);
-//     onChange?.(option.value);
-//   };
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newValue = event.target.value;
+    setSelectedValue(newValue);
+    onChange?.(newValue);
+  };
 
-//   return (
-//     <div
-//       className={clsx(styles.selectContainer, {
-//         [styles.error]: error,
-//         [styles.disabled]: disabled,
-//       })}
-//     >
-//       {/* {label && <label className={styles.label}>{label}</label>} */}
-//       <label
-//         className={clsx(styles.label, {
-//           [styles.errorFloat]: error,
-//           [styles.labelFloat]: !error && (isOpen || value),
-//           [styles.labelFloatStandard]: variant === 'standard' && (error || isOpen || value),
-//           [styles.labelFloatFilled]: variant === 'filled' && (error || isOpen || value),
-//           [styles.labelFloatOutlined]: variant === 'outlined' && (error || isOpen || value),
-//           [styles.labelStandart]: variant === 'standard',
-//           [styles.labelFilled]: variant === 'filled',
-//           [styles.labelOutlined]: variant === 'outlined',
-//         })}
-//       >
-//         {error ? 'Error' : label}
-//       </label>
-//       <div
-//         className={clsx(styles.select, styles[variant], { [styles.errorBorder]: error })}
-//         onClick={() => !disabled && setIsOpen(!isOpen)}
-//       >
-//         <span className={styles.selectedValue}>
-//           {options.find((opt) => opt.value === selectedValue)?.label || 'Select...'}
-//         </span>
-//       </div>
-//       {isOpen && (
-//         <ul className={styles.optionsList}>
-//           {options.map((option) => (
-//             <li
-//               key={option.value}
-//               className={clsx(styles.option, {
-//                 [styles.selected]: option.value === selectedValue,
-//               })}
-//               onClick={() => handleSelect(option)}
-//             >
-//               {option.label}
-//             </li>
-//           ))}
-//         </ul>
-//       )}
-//       {error && helperText && <span className={styles.helperText}>{helperText}</span>}
-//     </div>
-//   );
-// };
+  const handleFocus = () => {
+    setIsOpen(true);
+  };
 
-// export default Select;
+  const handleBlur = () => {
+    setIsOpen(false);
+  };
+  return (
+    <div
+      className={clsx(styles.selectContainer, {
+        [styles.error]: error,
+        [styles.disabled]: disabled,
+      })}
+    >
+      <label
+        className={clsx(styles.label, {
+          [styles.errorFloat]: error,
+          [styles.labelFloat]: isOpen || !!selectedValue,
+          [styles.labelFocused]: !error && isOpen,
+          [styles.labelFloatStandard]:
+            variant === 'standard' && (error || isOpen || !!selectedValue),
+          [styles.labelFloatFilled]: variant === 'filled' && (error || isOpen || !!selectedValue),
+          [styles.labelFloatOutlined]:
+            variant === 'outlined' && (error || isOpen || !!selectedValue),
+          [styles.labelStandart]: variant === 'standard',
+          [styles.labelFilled]: variant === 'filled',
+          [styles.labelOutlined]: variant === 'outlined',
+        })}
+      >
+        {error ? 'Error' : label}
+      </label>
+
+      <select
+        value={selectedValue ?? ''}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        disabled={disabled}
+        className={clsx(styles.select, {
+          [styles.errorBorder]: error,
+          [styles.standard]: variant === 'standard',
+          [styles.filled]: variant === 'filled',
+          [styles.outlined]: variant === 'outlined',
+        })}
+      >
+        {<option value="" disabled={!!selectedValue}></option>}
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      {error && helperText && <span className={styles.helperText}>{helperText}</span>}
+    </div>
+  );
+};
+
+export default Select;
