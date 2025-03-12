@@ -14,7 +14,8 @@
     "lint:fix": "eslint . --fix",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "pub": "webpack && npm version patch && npm publish"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
