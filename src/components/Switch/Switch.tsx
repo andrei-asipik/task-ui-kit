@@ -18,7 +18,7 @@ const Switch = ({ checked, onChange, disabled = false, label, className }: Switc
   };
 
   return (
-    <div className={clsx(styles.switchWrapper, className)}>
+    <div data-testid="switch" className={clsx(styles.switchWrapper, className)}>
       <div
         onClick={handleChange}
         className={clsx(styles.slider, {

@@ -13,7 +13,9 @@ export interface TextInputProps {
   variant?: 'standard' | 'filled' | 'outlined';
   error?: boolean;
   disabled?: boolean;
+  required?: boolean;
   helperText?: string;
+  className?: string;
 }
 
 const TextInput = ({
@@ -26,14 +28,20 @@ const TextInput = ({
   variant = 'standard',
   error = false,
   disabled = false,
+  required = false,
   helperText,
+  className,
 }: TextInputProps) => {
   return (
     <div
-      className={clsx(styles.textField, {
-        [styles.error]: error,
-        [styles.disabled]: disabled,
-      })}
+      className={clsx(
+        styles.textField,
+        {
+          [styles.error]: error,
+          [styles.disabled]: disabled,
+        },
+        className
+      )}
     >
       <label
         className={clsx(styles.label, {
@@ -48,7 +56,7 @@ const TextInput = ({
           [styles.labelOutlined]: variant === 'outlined',
         })}
       >
-        {error ? 'Error' : label}
+        {error ? 'Error' : required ? `${label}*` : label}
       </label>
 
       <input
@@ -63,6 +71,7 @@ const TextInput = ({
         onChange={onChange}
         value={value}
         disabled={disabled}
+        required={required}
       />
       {error && helperText && <span className={styles.helperText}>{helperText}</span>}
     </div>

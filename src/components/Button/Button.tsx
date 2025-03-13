@@ -32,6 +32,7 @@ const Button = ({
         disabled && styles.disabled,
         className
       )}
+      disabled={disabled}
       {...props}
     >
       {children}

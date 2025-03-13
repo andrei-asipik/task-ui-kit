@@ -20,6 +20,7 @@ export interface SelectProps {
   disabled?: boolean;
   helperText?: string;
   required?: boolean;
+  className?: string;
 }
 
 const Select = ({
@@ -33,14 +34,20 @@ const Select = ({
   variant = 'standard',
   error = false,
   disabled = false,
+  required = false,
   helperText,
+  className,
 }: SelectProps) => {
   return (
     <div
-      className={clsx(styles.selectContainer, {
-        [styles.error]: error,
-        [styles.disabled]: disabled,
-      })}
+      className={clsx(
+        styles.selectContainer,
+        {
+          [styles.error]: error,
+          [styles.disabled]: disabled,
+        },
+        className
+      )}
     >
       <label
         className={clsx(styles.label, {
@@ -55,7 +62,7 @@ const Select = ({
           [styles.labelOutlined]: variant === 'outlined',
         })}
       >
-        {error ? 'Error' : label}
+        {error ? 'Error' : required ? `${label}*` : label}
       </label>
 
       <select
@@ -64,6 +71,7 @@ const Select = ({
         onFocus={onFocus}
         onBlur={onBlur}
         disabled={disabled}
+        required={required}
         className={clsx(styles.select, {
           [styles.errorBorder]: error,
           [styles.standard]: variant === 'standard',

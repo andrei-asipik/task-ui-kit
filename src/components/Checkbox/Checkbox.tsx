@@ -13,9 +13,12 @@ export interface CheckboxProps {
 const Checkbox = ({ checked, onChange, disabled, label, className }: CheckboxProps) => {
   return (
     <label className={clsx(styles.checkboxWrapper, className, { [styles.disabled]: disabled })}>
-      <div
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={() => !disabled && onChange(!checked)}
+        disabled={disabled}
         className={clsx(styles.checkbox, { [styles.checked]: checked })}
-        onClick={() => !disabled && onChange(!checked)}
       />
       {label && <span className={styles.label}>{label}</span>}
     </label>
