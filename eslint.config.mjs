@@ -9,13 +9,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
-    ignores: [
-      'node_modules',
-      'dist',
-      '**/*.config.{js,ts,mjs,cjs}',
-      '**/*.setup.{js,ts,mjs,cjs}',
-      // '**/*.test.{tsx,ts}',
-    ],
+    ignores: ['node_modules', 'dist', '**/*.config.{js,ts,mjs,cjs}', '**/*.setup.{js,ts,mjs,cjs}'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

@@ -1,4 +1,4 @@
-# Task UI Kit
+# Custom components lib: Task UI Kit
 
 A UI component library for React applications.
 
@@ -11,14 +11,14 @@ A UI component library for React applications.
 ### Clone the Repository
 
 ```bash
-$ git clone https://github.com/andrei-asipik/task-ui-kit.git
-$ cd task-ui-kit
+$ git clone https://github.com/andrei-asipik/custom-components-lib.git
+$ cd custom-components-lib
 ```
 
 ### Switch to Development Branch
 
 ```bash
-$ git checkout dev
+$ git checkout develop
 ```
 
 ### Install Dependencies
@@ -52,5 +52,3 @@ $ npm run storybook
 ```bash
 $ npm run test
 ```
-
----
