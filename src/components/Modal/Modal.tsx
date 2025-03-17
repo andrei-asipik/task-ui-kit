@@ -13,9 +13,13 @@ export interface ModalProps {
 const Modal = ({ isOpen, onClose, title, className, children }: ModalProps) => {
   if (!isOpen) return null;
 
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={clsx(styles.modal, className)} onClick={(e) => e.stopPropagation()}>
+      <div className={clsx(styles.modal, className)} onClick={handleModalClick}>
         {title && <div className={styles.header}>{title}</div>}
         <div className={styles.content}>{children}</div>
         <button className={styles.closeButton} onClick={onClose}>
